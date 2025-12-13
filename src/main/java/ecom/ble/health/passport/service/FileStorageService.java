@@ -18,6 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -27,47 +28,67 @@ public class FileStorageService {
     @Value("${file.upload-dir:uploads}")
     private String uploadDir;
 
-    private Path fileStorageLocation;
+    private Path baseStorageLocation;
 
     @PostConstruct
     public void init() {
-        this.fileStorageLocation = Paths.get(uploadDir).toAbsolutePath().normalize();
+        this.baseStorageLocation = Paths.get(uploadDir).toAbsolutePath().normalize();
         try {
-            Files.createDirectories(this.fileStorageLocation);
+            Files.createDirectories(this.baseStorageLocation);
         } catch (IOException ex) {
             throw new FileStorageException("Could not create the directory for file uploads.", ex);
         }
     }
 
-    public List<FileUploadResponse> storeFiles(MultipartFile[] files) {
+    private Path getUserStorageLocation(String userId) {
+        if (userId == null || userId.isBlank()) {
+            throw new FileStorageException("User ID cannot be null or empty");
+        }
+        
+        // Sanitize userId to prevent directory traversal
+        String sanitizedUserId = userId.replaceAll("[^a-zA-Z0-9_-]", "_");
+        Path userPath = this.baseStorageLocation.resolve(sanitizedUserId).normalize();
+        
+        try {
+            Files.createDirectories(userPath);
+        } catch (IOException ex) {
+            throw new FileStorageException("Could not create user directory for: " + userId, ex);
+        }
+        
+        return userPath;
+    }
+
+    public List<FileUploadResponse> storeFiles(String userId, MultipartFile[] files) {
         List<FileUploadResponse> responses = new ArrayList<>();
 
         for (MultipartFile file : files) {
-            responses.add(storeFile(file));
+            responses.add(storeFile(userId, file));
         }
 
         return responses;
     }
 
-    public FileUploadResponse storeFile(MultipartFile file) {
+    public FileUploadResponse storeFile(String userId, MultipartFile file) {
         String originalFileName = StringUtils.cleanPath(file.getOriginalFilename());
+        Path userStorageLocation = getUserStorageLocation(userId);
 
         try {
             if (originalFileName.contains("..")) {
                 throw new FileStorageException("Filename contains invalid path sequence: " + originalFileName);
             }
 
-            String fileName = generateUniqueFileName(originalFileName);
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
+            Path targetLocation = userStorageLocation.resolve(originalFileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 
             String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/api/files/download/")
-                    .path(fileName)
+                    .path("/api/users/")
+                    .path(userId)
+                    .path("/files/download/")
+                    .path(originalFileName)
                     .toUriString();
 
             return FileUploadResponse.builder()
-                    .fileName(fileName)
+                    .fileName(originalFileName)
                     .fileType(file.getContentType())
                     .size(file.getSize())
                     .downloadUrl(downloadUrl)
@@ -84,9 +105,17 @@ public class FileStorageService {
         }
     }
 
-    public Resource loadFileAsResource(String fileName) {
+    public Resource loadFileAsResource(String userId, String fileName) {
+        Path userStorageLocation = getUserStorageLocation(userId);
+        
         try {
-            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            Path filePath = userStorageLocation.resolve(fileName).normalize();
+            
+            // Security check: ensure the file is within user's directory
+            if (!filePath.startsWith(userStorageLocation)) {
+                throw new FileStorageException("Access denied to file: " + fileName);
+            }
+            
             Resource resource = new UrlResource(filePath.toUri());
 
             if (resource.exists() && resource.isReadable()) {
@@ -99,50 +128,38 @@ public class FileStorageService {
         }
     }
 
-    public List<String> listAllFiles() {
-        try (Stream<Path> paths = Files.walk(this.fileStorageLocation, 1)) {
+    public List<String> listAllFiles(String userId) {
+        Path userStorageLocation = getUserStorageLocation(userId);
+        
+        if (!Files.exists(userStorageLocation)) {
+            return Collections.emptyList();
+        }
+        
+        try (Stream<Path> paths = Files.walk(userStorageLocation, 1)) {
             return paths
                     .filter(Files::isRegularFile)
                     .map(path -> path.getFileName().toString())
                     .toList();
         } catch (IOException ex) {
-            throw new FileStorageException("Could not list files.", ex);
+            throw new FileStorageException("Could not list files for user: " + userId, ex);
         }
     }
 
-    public boolean deleteFile(String fileName) {
+    public boolean deleteFile(String userId, String fileName) {
+        Path userStorageLocation = getUserStorageLocation(userId);
+        
         try {
-            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            Path filePath = userStorageLocation.resolve(fileName).normalize();
+            
+            // Security check: ensure the file is within user's directory
+            if (!filePath.startsWith(userStorageLocation)) {
+                throw new FileStorageException("Access denied to file: " + fileName);
+            }
+            
             return Files.deleteIfExists(filePath);
         } catch (IOException ex) {
             throw new FileStorageException("Could not delete file: " + fileName, ex);
         }
     }
 
-    private String generateUniqueFileName(String originalFileName) {
-        String baseName = originalFileName;
-        String extension = "";
-
-        int dotIndex = originalFileName.lastIndexOf('.');
-        if (dotIndex > 0) {
-            baseName = originalFileName.substring(0, dotIndex);
-            extension = originalFileName.substring(dotIndex);
-        }
-
-        Path targetPath = this.fileStorageLocation.resolve(originalFileName);
-        if (!Files.exists(targetPath)) {
-            return originalFileName;
-        }
-
-        int counter = 1;
-        String newFileName;
-        do {
-            newFileName = baseName + "_" + counter + extension;
-            targetPath = this.fileStorageLocation.resolve(newFileName);
-            counter++;
-        } while (Files.exists(targetPath));
-
-        return newFileName;
-    }
 }
-

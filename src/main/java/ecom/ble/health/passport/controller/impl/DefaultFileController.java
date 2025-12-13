@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.net.URLConnection;
 import java.util.List;
 
@@ -23,18 +22,18 @@ public class DefaultFileController implements FileController {
     private final FileStorageService fileStorageService;
 
     @Override
-    public ResponseEntity<List<FileUploadResponse>> uploadFiles(MultipartFile[] files) {
+    public ResponseEntity<List<FileUploadResponse>> uploadFiles(String userId, MultipartFile[] files) {
         if (files == null || files.length == 0) {
             return ResponseEntity.badRequest().build();
         }
 
-        List<FileUploadResponse> responses = fileStorageService.storeFiles(files);
+        List<FileUploadResponse> responses = fileStorageService.storeFiles(userId, files);
         return ResponseEntity.ok(responses);
     }
 
     @Override
-    public ResponseEntity<Resource> downloadFile(String filename) {
-        Resource resource = fileStorageService.loadFileAsResource(filename);
+    public ResponseEntity<Resource> downloadFile(String userId, String filename) {
+        Resource resource = fileStorageService.loadFileAsResource(userId, filename);
 
         String contentType = URLConnection.guessContentTypeFromName(resource.getFilename());
         if (contentType == null) {
@@ -48,14 +47,14 @@ public class DefaultFileController implements FileController {
     }
 
     @Override
-    public ResponseEntity<List<String>> listAllFiles() {
-        List<String> files = fileStorageService.listAllFiles();
+    public ResponseEntity<List<String>> listAllFiles(String userId) {
+        List<String> files = fileStorageService.listAllFiles(userId);
         return ResponseEntity.ok(files);
     }
 
     @Override
-    public ResponseEntity<String> deleteFile(String filename) {
-        boolean deleted = fileStorageService.deleteFile(filename);
+    public ResponseEntity<String> deleteFile(String userId, String filename) {
+        boolean deleted = fileStorageService.deleteFile(userId, filename);
         if (deleted) {
             return ResponseEntity.ok("File deleted successfully: " + filename);
         } else {
@@ -63,4 +62,3 @@ public class DefaultFileController implements FileController {
         }
     }
 }
-
