@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: health-passport
+  datasource:
+    url: "jdbc:mysql://localhost:3306/my_database"
+    username: "myuser"
+    password: "secret"
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
