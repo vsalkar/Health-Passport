@@ -1,19 +1,25 @@
 package ecom.ble.health.passport.controller.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ecom.ble.health.passport.controller.HealthPassportController;
 import ecom.ble.health.passport.model.Diagnosis;
 import ecom.ble.health.passport.model.MedicalRecord;
 import ecom.ble.health.passport.model.User;
+import lombok.SneakyThrows;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Controller
 public class DefaultHealthPassportController implements HealthPassportController {
     @Override
-    public ResponseEntity<User> getUserHealthDetails(String id) {
+    public ResponseEntity<User> getUserHealthDetails(String userId) {
         var user = new User();
         var records = new ArrayList<MedicalRecord>();
         MedicalRecord medicalRecord = new MedicalRecord();
@@ -40,4 +46,24 @@ public class DefaultHealthPassportController implements HealthPassportController
         user.setMedicalRecords(records);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
+    @SneakyThrows
+    @Override
+    public ResponseEntity<HttpStatus> addMedicalRecord(ecom.ble.health.passport.model.record.MedicalRecord record, String userId) {
+
+        var recordId = record.getRecordId();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+
+        var filePath = userId.concat("_").concat(recordId).concat(".json");
+       // ClassPathResource classPathResource = new ClassPathResource(filePath);
+        gson.toJson(record,new FileWriter(filePath));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<ecom.ble.health.passport.model.record.MedicalRecord> getRecordUserHealthDetails(String id) {
+        return null;
+    }
+
 }
