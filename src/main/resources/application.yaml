@@ -30,3 +30,10 @@ spring:
 
 file:
   upload-dir: ./uploads
+
+# OpenAI configuration used by the analyzers below.
+# Prefer setting OPENAI_API_KEY in your environment; this keeps secrets out of source control.
+openai:
+  api-key: ${OPENAI_API_KEY:}
+  base-url: https://api.openai.com/v1
+  model: gpt-4o
