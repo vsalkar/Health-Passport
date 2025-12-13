@@ -2,13 +2,19 @@ spring:
   application:
     name: health-passport
   datasource:
-    url: "jdbc:mysql://localhost:3306/my_database"
-    username: "myuser"
-    password: "secret"
+    url: "jdbc:mysql://localhost:3306/medical_diagnosis?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.MySQLDialect"
   autoconfigure:
     exclude:
-      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
       - org.springframework.ai.model.openai.autoconfigure.OpenAiAutoConfiguration
       - org.springframework.ai.model.openai.autoconfigure.OpenAiAudioSpeechAutoConfiguration
       - org.springframework.ai.model.openai.autoconfigure.OpenAiAudioTranscriptionAutoConfiguration

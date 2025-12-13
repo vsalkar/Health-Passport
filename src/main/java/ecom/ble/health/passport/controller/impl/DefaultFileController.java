@@ -2,6 +2,7 @@ package ecom.ble.health.passport.controller.impl;
 
 import ecom.ble.health.passport.controller.FileController;
 import ecom.ble.health.passport.model.FileUploadResponse;
+import ecom.ble.health.passport.model.UserFileMetadata;
 import ecom.ble.health.passport.service.FileStorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
@@ -47,8 +48,8 @@ public class DefaultFileController implements FileController {
     }
 
     @Override
-    public ResponseEntity<List<String>> listAllFiles(String userId) {
-        List<String> files = fileStorageService.listAllFiles(userId);
+    public ResponseEntity<List<UserFileMetadata>> listAllFiles(String userId) {
+        List<UserFileMetadata> files = fileStorageService.listAllFiles(userId);
         return ResponseEntity.ok(files);
     }
 

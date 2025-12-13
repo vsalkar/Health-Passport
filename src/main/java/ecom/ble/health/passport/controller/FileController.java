@@ -1,6 +1,7 @@
 package ecom.ble.health.passport.controller;
 
 import ecom.ble.health.passport.model.FileUploadResponse;
+import ecom.ble.health.passport.model.UserFileMetadata;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public interface FileController {
             @PathVariable String filename);
 
     @GetMapping("/list")
-    ResponseEntity<List<String>> listAllFiles(@PathVariable String userId);
+    ResponseEntity<List<UserFileMetadata>> listAllFiles(@PathVariable String userId);
 
     @DeleteMapping("/{filename}")
     ResponseEntity<String> deleteFile(
