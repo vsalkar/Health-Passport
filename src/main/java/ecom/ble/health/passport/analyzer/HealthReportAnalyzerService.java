@@ -20,6 +20,7 @@ public class HealthReportAnalyzerService {
     private final StoredFileReader storedFileReader;
     private final OpenAiClient openAiClient;
     private final ObjectMapper objectMapper;
+    private final PhiRemovalService phiRemovalService;
 
     @Value("${openai.model:gpt-4o-mini}")
     private String defaultModel;
@@ -46,9 +47,12 @@ public class HealthReportAnalyzerService {
                 .put("content", "You are an expert medical AI assistant. You MUST respond with valid JSON only, no markdown formatting."));
 
         if ("text".equals(file.type())) {
+            // Remove PHI from text content before sending to AI
+            String textContent = file.textContent() == null ? "" : file.textContent();
+            String sanitizedText = phiRemovalService.removePhi(textContent);
             messages.add(objectMapper.createObjectNode()
                     .put("role", "user")
-                    .put("content", prompt + "\n\nHealth Report:\n" + (file.textContent() == null ? "" : file.textContent())));
+                    .put("content", prompt + "\n\nHealth Report:\n" + sanitizedText));
         } else if ("image".equals(file.type())) {
             var user = objectMapper.createObjectNode();
             user.put("role", "user");
