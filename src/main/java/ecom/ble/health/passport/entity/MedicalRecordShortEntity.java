@@ -58,6 +58,9 @@ public class MedicalRecordShortEntity {
     @Column(name = "status", length = 50)
     private String status;
 
+    @Column(name = "health_score")
+    private Integer healthScore;
+
     // Stored as JSON string in MySQL JSON column (or TEXT if your table differs)
     @Column(name = "medications", columnDefinition = "json")
     private String medications;

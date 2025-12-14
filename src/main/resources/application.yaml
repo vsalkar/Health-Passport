@@ -34,6 +34,6 @@ file:
 # OpenAI configuration used by the analyzers below.
 # Prefer setting OPENAI_API_KEY in your environment; this keeps secrets out of source control.
 openai:
-  api-key: ${OPENAI_API_KEY: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}
+  api-key: ${OPENAI_API_KEY:}
   base-url: https://api.openai.com/v1
   model: gpt-4o-mini

@@ -15,5 +15,6 @@ public class MedicalRecordShort {
     private String createdAt;
     private String updatedAt;
     private String status;
+    private Integer healthScore;
     private List<String> medications;
 }

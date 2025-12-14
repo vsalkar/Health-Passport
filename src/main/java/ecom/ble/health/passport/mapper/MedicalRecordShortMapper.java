@@ -36,6 +36,7 @@ public class MedicalRecordShortMapper {
         model.setCreatedAt(entity.getCreatedAt());
         model.setUpdatedAt(entity.getUpdatedAt());
         model.setStatus(entity.getStatus());
+        model.setHealthScore(entity.getHealthScore());
 
         // Map flattened diagnosis fields to Diagnosis object
         Diagnosis diagnosis = new Diagnosis();
@@ -89,6 +90,7 @@ public class MedicalRecordShortMapper {
         entity.setCreatedAt(model.getCreatedAt());
         entity.setUpdatedAt(model.getUpdatedAt());
         entity.setStatus(model.getStatus());
+        entity.setHealthScore(model.getHealthScore());
 
         // Map Diagnosis object to flattened fields
         Diagnosis diagnosis = model.getDiagnosis();

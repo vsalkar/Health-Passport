@@ -95,6 +95,7 @@ public class HealthReportProcessingService {
                 // Build MedicalRecordShort (API model) + persist a DB entity version
                 MedicalRecordShort medicalRecordShort = new MedicalRecordShort();
                 medicalRecordShort.setMedicalRecordId(String.valueOf(fileId));
+                medicalRecordShort.setHealthScore(medicalRecord.getOverallHealthScore().getScore());
                 if (medicalRecord.getSummary() != null) {
                     medicalRecordShort.setCreatedAt(medicalRecord.getSummary().getReportDate());
                 }
@@ -150,6 +151,7 @@ public class HealthReportProcessingService {
         entity.setCreatedAt(medicalRecordShort.getCreatedAt());
         entity.setUpdatedAt(medicalRecordShort.getUpdatedAt());
         entity.setStatus(medicalRecordShort.getStatus());
+        entity.setHealthScore(medicalRecordShort.getHealthScore());
 
         Diagnosis d = medicalRecordShort.getDiagnosis();
         if (d != null) {
