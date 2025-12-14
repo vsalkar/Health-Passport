@@ -157,11 +157,12 @@ public class MedicalRecord {
         this.additionalProperties.put(name, value);
     }
 
-    @JsonAnyGetter
+    @JsonProperty("recordId")
     public String getRecordId() {
         return recordId;
     }
-    @JsonAnySetter
+
+    @JsonProperty("recordId")
     public void setRecordId(String recordId) {
         this.recordId = recordId;
     }

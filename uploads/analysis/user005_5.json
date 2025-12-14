@@ -1,0 +1,198 @@
+{
+  "overallHealthScore" : {
+    "score" : 68,
+    "maxScore" : 100,
+    "rating" : "Fair",
+    "ratingColor" : "yellow",
+    "assessment" : "The patient shows some areas of concern, particularly in cholesterol and blood sugar levels."
+  },
+  "outOfRangeValues" : [ {
+    "parameter" : "LDL Cholesterol",
+    "yourValue" : "100.39 mg/dL",
+    "idealRange" : "<100 mg/dL",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 0.39
+  }, {
+    "parameter" : "Fasting Blood Sugar",
+    "yourValue" : "141.0 mg/dL",
+    "idealRange" : "74 - 106 mg/dL",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 32.9
+  }, {
+    "parameter" : "HbA1c",
+    "yourValue" : "7.10%",
+    "idealRange" : "<6.5%",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 9.23
+  }, {
+    "parameter" : "Homocysteine",
+    "yourValue" : "23.86 micromol/L",
+    "idealRange" : "6.0 - 14.8 micromol/L",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 60.5
+  }, {
+    "parameter" : "IgE",
+    "yourValue" : "492.30 IU/mL",
+    "idealRange" : "0 - 87 IU/mL",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 465.5
+  } ],
+  "summary" : {
+    "brief" : "The patient exhibits several elevated markers indicating potential health risks, particularly in metabolic and cardiovascular health. Regular monitoring and lifestyle adjustments are recommended.",
+    "reportDate" : "2024-12-13",
+    "patientInfo" : {
+      "name" : "Lyubochka Svetka",
+      "age" : "41",
+      "gender" : "Male"
+    }
+  },
+  "keyFindings" : {
+    "categories" : [ {
+      "name" : "Complete Blood Count",
+      "tests" : [ {
+        "name" : "Hemoglobin",
+        "value" : "14.5 g/dL",
+        "normalRange" : "13.0-16.5 g/dL",
+        "status" : "normal",
+        "icon" : "✓"
+      } ]
+    } ]
+  },
+  "detailedAnalysis" : {
+    "byCategory" : [ {
+      "category" : "Cardiovascular Health",
+      "score" : 50,
+      "maxScore" : 100,
+      "findings" : "Elevated LDL cholesterol and triglycerides indicate a need for dietary changes.",
+      "keyPoints" : [ "Monitor cholesterol levels", "Consider dietary adjustments" ]
+    }, {
+      "category" : "Metabolic Health",
+      "score" : 40,
+      "maxScore" : 100,
+      "findings" : "High fasting blood sugar and HbA1c levels suggest pre-diabetes.",
+      "keyPoints" : [ "Implement lifestyle changes", "Regular monitoring of blood sugar" ]
+    } ]
+  },
+  "areasOfConcern" : [ {
+    "parameter" : "LDL Cholesterol",
+    "value" : "100.39 mg/dL",
+    "severity" : "Moderate",
+    "whyItMatters" : "High LDL cholesterol can lead to cardiovascular diseases.",
+    "potentialCauses" : [ "Diet high in saturated fats", "Lack of physical activity" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "<100 mg/dL",
+    "immediateAction" : "Consult a dietitian for dietary changes."
+  }, {
+    "parameter" : "Fasting Blood Sugar",
+    "value" : "141.0 mg/dL",
+    "severity" : "Moderate",
+    "whyItMatters" : "Elevated fasting blood sugar indicates potential diabetes risk.",
+    "potentialCauses" : [ "Poor diet", "Sedentary lifestyle" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "74 - 106 mg/dL",
+    "immediateAction" : "Implement dietary changes and increase physical activity."
+  }, {
+    "parameter" : "HbA1c",
+    "value" : "7.10%",
+    "severity" : "Moderate",
+    "whyItMatters" : "High HbA1c levels indicate poor blood sugar control.",
+    "potentialCauses" : [ "Uncontrolled diabetes", "Dietary factors" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "<6.5%",
+    "immediateAction" : "Consult with a healthcare provider for diabetes management."
+  }, {
+    "parameter" : "Homocysteine",
+    "value" : "23.86 micromol/L",
+    "severity" : "Moderate",
+    "whyItMatters" : "Elevated homocysteine levels are associated with cardiovascular risks.",
+    "potentialCauses" : [ "Vitamin B12 deficiency", "Genetic factors" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "6.0 - 14.8 micromol/L",
+    "immediateAction" : "Consider vitamin supplementation and dietary changes."
+  }, {
+    "parameter" : "IgE",
+    "value" : "492.30 IU/mL",
+    "severity" : "Moderate",
+    "whyItMatters" : "High IgE levels may indicate allergic reactions or conditions.",
+    "potentialCauses" : [ "Allergies", "Environmental factors" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "0 - 87 IU/mL",
+    "immediateAction" : "Consult an allergist for further evaluation."
+  } ],
+  "positiveIndicators" : [ {
+    "parameter" : "Kidney Function",
+    "value" : "Normal",
+    "why" : "Good kidney filtration and function.",
+    "maintain" : "Keep current hydration and dietary habits."
+  } ],
+  "recommendations" : {
+    "immediate" : {
+      "timeframe" : "1-2 weeks",
+      "actions" : [ {
+        "action" : "Start dietary changes to lower cholesterol",
+        "details" : "Reduce saturated fats and increase fiber intake.",
+        "priority" : "High"
+      }, {
+        "action" : "Increase physical activity",
+        "details" : "Aim for at least 150 minutes of moderate exercise weekly.",
+        "priority" : "High"
+      } ]
+    },
+    "shortTerm" : {
+      "timeframe" : "1-3 months",
+      "dietary" : [ "Reduce sugar intake", "Increase whole grains" ],
+      "lifestyle" : [ "Incorporate regular exercise", "Monitor weight" ],
+      "supplements" : [ "Vitamin B12", "Folic acid" ]
+    },
+    "longTerm" : {
+      "timeframe" : "3-6 months",
+      "habits" : [ "Maintain a balanced diet", "Regular health check-ups" ],
+      "monitoring" : [ "Regular blood sugar monitoring", "Cholesterol levels" ]
+    }
+  },
+  "followUp" : {
+    "retestTimeline" : [ {
+      "timeframe" : "3 months",
+      "tests" : [ "Lipid panel", "Fasting glucose", "HbA1c" ]
+    } ],
+    "discussWithDoctor" : [ "Cholesterol management", "Diabetes risk assessment" ],
+    "warningSigns" : [ "Unexplained weight loss", "Increased thirst or urination" ]
+  },
+  "healthScoreBreakdown" : {
+    "cardiovascular" : {
+      "score" : 15,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "metabolic" : {
+      "score" : 12,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "organFunction" : {
+      "score" : 21,
+      "maxScore" : 25,
+      "status" : "Good"
+    },
+    "nutritional" : {
+      "score" : 20,
+      "maxScore" : 25,
+      "status" : "Good"
+    }
+  },
+  "metadata" : {
+    "analysisDate" : "2024-12-13T10:30:00Z",
+    "aiModel" : "gpt-4o",
+    "version" : "1.0"
+  }
+}

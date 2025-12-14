@@ -1,0 +1,126 @@
+{
+  "overallHealthScore" : {
+    "score" : 60,
+    "maxScore" : 100,
+    "rating" : "Fair",
+    "ratingColor" : "yellow",
+    "assessment" : "Patient shows signs of acute dengue infection with low platelet count."
+  },
+  "outOfRangeValues" : [ {
+    "parameter" : "Platelets",
+    "yourValue" : "62000 /µL",
+    "idealRange" : "150000-450000 /µL",
+    "status" : "Low",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 58.67
+  } ],
+  "summary" : {
+    "brief" : "The patient is diagnosed with acute dengue fever, indicated by low platelet count and positive NS1 antigen. Close monitoring is required.",
+    "reportDate" : "2024-12-13",
+    "patientInfo" : {
+      "name" : "Not available",
+      "age" : "Not available",
+      "gender" : "Male"
+    }
+  },
+  "keyFindings" : {
+    "categories" : [ {
+      "name" : "Complete Blood Count",
+      "tests" : [ {
+        "name" : "Hemoglobin",
+        "value" : "15.1 g/dL",
+        "normalRange" : "13.0-17.0 g/dL",
+        "status" : "normal",
+        "icon" : "✓"
+      }, {
+        "name" : "Platelets",
+        "value" : "62000 /µL",
+        "normalRange" : "150000-450000 /µL",
+        "status" : "low",
+        "icon" : "✗"
+      } ]
+    } ]
+  },
+  "detailedAnalysis" : {
+    "byCategory" : [ {
+      "category" : "Infectious Disease",
+      "score" : 50,
+      "maxScore" : 100,
+      "findings" : "Acute dengue infection with significant thrombocytopenia.",
+      "keyPoints" : [ "Monitor platelet levels closely", "Hydration is crucial" ]
+    } ]
+  },
+  "areasOfConcern" : [ {
+    "parameter" : "Platelets",
+    "value" : "62000 /µL",
+    "severity" : "Moderate",
+    "whyItMatters" : "Low platelet count increases the risk of bleeding and complications.",
+    "potentialCauses" : [ "Dengue virus infection", "Bone marrow suppression" ],
+    "riskLevel" : "High",
+    "targetValue" : "150000-450000 /µL",
+    "immediateAction" : "Increase fluid intake and monitor platelet levels."
+  } ],
+  "positiveIndicators" : [ {
+    "parameter" : "Hemoglobin",
+    "value" : "15.1 g/dL",
+    "why" : "Normal hemoglobin level indicates adequate oxygen transport.",
+    "maintain" : "Continue a balanced diet."
+  } ],
+  "recommendations" : {
+    "immediate" : {
+      "timeframe" : "1-2 weeks",
+      "actions" : [ {
+        "action" : "Increase fluid intake",
+        "details" : "Aim for at least 2-3 liters of fluids daily.",
+        "priority" : "High"
+      } ]
+    },
+    "shortTerm" : {
+      "timeframe" : "1-3 months",
+      "dietary" : [ "Increase hydration", "Include iron-rich foods" ],
+      "lifestyle" : [ "Rest adequately", "Avoid strenuous activities" ],
+      "supplements" : [ "Electrolyte solutions" ]
+    },
+    "longTerm" : {
+      "timeframe" : "3-6 months",
+      "habits" : [ "Maintain hydration habits", "Regular health check-ups" ],
+      "monitoring" : [ "Regular platelet counts", "Monitor for any bleeding signs" ]
+    }
+  },
+  "followUp" : {
+    "retestTimeline" : [ {
+      "timeframe" : "1 week",
+      "tests" : [ "Platelet count", "Complete blood count" ]
+    } ],
+    "discussWithDoctor" : [ "Management of dengue", "Hydration strategies" ],
+    "warningSigns" : [ "Excessive bleeding", "Severe abdominal pain" ]
+  },
+  "healthScoreBreakdown" : {
+    "cardiovascular" : {
+      "score" : 20,
+      "maxScore" : 25,
+      "status" : "Fair"
+    },
+    "metabolic" : {
+      "score" : 10,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "organFunction" : {
+      "score" : 25,
+      "maxScore" : 25,
+      "status" : "Good"
+    },
+    "nutritional" : {
+      "score" : 5,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    }
+  },
+  "metadata" : {
+    "analysisDate" : "2024-12-13T10:30:00Z",
+    "aiModel" : "gpt-4o",
+    "version" : "1.0"
+  }
+}

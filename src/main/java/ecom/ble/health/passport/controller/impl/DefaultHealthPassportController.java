@@ -1,9 +1,14 @@
 package ecom.ble.health.passport.controller.impl;
 
 import ecom.ble.health.passport.controller.HealthPassportController;
+import ecom.ble.health.passport.entity.MedicalRecordShortEntity;
+import ecom.ble.health.passport.entity.UserEntity;
+import ecom.ble.health.passport.mapper.MedicalRecordShortMapper;
 import ecom.ble.health.passport.model.Diagnosis;
 import ecom.ble.health.passport.model.MedicalRecordShort;
 import ecom.ble.health.passport.model.User;
+import ecom.ble.health.passport.repository.MedicalRecordShortRepository;
+import ecom.ble.health.passport.repository.UserRepository;
 import ecom.ble.health.passport.service.HealthReportProcessingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,37 +17,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
 public class DefaultHealthPassportController implements HealthPassportController {
 
     private final HealthReportProcessingService healthReportProcessingService;
+    private final MedicalRecordShortRepository medicalRecordShortRepository;
+    private final UserRepository userRepository;
+    private final MedicalRecordShortMapper medicalRecordShortMapper;
     @Override
     public ResponseEntity<User> getUserHealthDetails(String userId) {
+        List<MedicalRecordShortEntity> medicalRecordShortEntities = medicalRecordShortRepository.findAllMedicalRecordShortEntitiesByUserId(userId);
+        UserEntity userEntity = userRepository.findById(userId).get();
         var user = new User();
         var records = new ArrayList<MedicalRecordShort>();
-        MedicalRecordShort medicalRecordShort = new MedicalRecordShort();
-        Diagnosis diagnosis = new Diagnosis();
-        user.setId("122345");
-        user.setName("John Smith");
-        user.setAge("30");
-        user.setBloodGroup("B+");
-        user.setContactNumber("1234567890");
-        records.add(medicalRecordShort);
-        medicalRecordShort.setRecordType("Consultation");
-        medicalRecordShort.setMedicalRecordId("med123");
-        medicalRecordShort.setStatus("Completed");
-        medicalRecordShort.setSymptoms("Fever, Cold");
-        medicalRecordShort.setCreatedAt("12/12/2025");
-        medicalRecordShort.setUpdatedAt("12/12/2025");
-        diagnosis.setId("dia1233");
-        diagnosis.setDiagnosisDate("12/12/2025");
-        diagnosis.setDiagnosisName("Temperature Analysis");
-        diagnosis.setDiagnosisType("Lab Test");
-        diagnosis.setSeverity("High");
-        diagnosis.setDescription("High Temp and cold analysis");
-        medicalRecordShort.setDiagnosis(diagnosis);
+        user.setId(userEntity.getId());
+        user.setName(userEntity.getName());
+        user.setAge(userEntity.getAge().toString());
+        user.setBloodGroup(userEntity.getBloodGroup());
+        user.setContactNumber(userEntity.getContactNumber());
+        medicalRecordShortEntities.forEach(record -> {
+            records.add(medicalRecordShortMapper.toModel(record));
+        });
         user.setMedicalRecordShorts(records);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }

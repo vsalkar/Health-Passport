@@ -1,0 +1,143 @@
+{
+  "overallHealthScore" : {
+    "score" : 70,
+    "maxScore" : 100,
+    "rating" : "Fair",
+    "ratingColor" : "yellow",
+    "assessment" : "Overall health is fair with some areas needing improvement."
+  },
+  "outOfRangeValues" : [ {
+    "parameter" : "LDL Cholesterol",
+    "yourValue" : "50 mg/dL",
+    "idealRange" : "<100 mg/dL",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 50
+  }, {
+    "parameter" : "HbA1c",
+    "yourValue" : "10.0%",
+    "idealRange" : "<5.7%",
+    "status" : "High",
+    "severity" : "Critical",
+    "severityColor" : "red",
+    "percentageOutOfRange" : 75
+  } ],
+  "summary" : {
+    "brief" : "The patient shows elevated LDL cholesterol and HbA1c levels, indicating potential cardiovascular and diabetic risks. Overall, the health report suggests areas for improvement.",
+    "reportDate" : "2024-12-13",
+    "patientInfo" : {
+      "name" : "Mr. DUMMY",
+      "age" : 25,
+      "gender" : "Male"
+    }
+  },
+  "keyFindings" : {
+    "categories" : [ {
+      "name" : "Complete Blood Count",
+      "tests" : [ {
+        "name" : "Hemoglobin",
+        "value" : "15.00 g/dL",
+        "normalRange" : "13.0-17.0 g/dL",
+        "status" : "normal",
+        "icon" : "✓"
+      } ]
+    } ]
+  },
+  "detailedAnalysis" : {
+    "byCategory" : [ {
+      "category" : "Cardiovascular Health",
+      "score" : 50,
+      "maxScore" : 100,
+      "findings" : "LDL cholesterol is elevated, indicating a need for dietary changes.",
+      "keyPoints" : [ "Monitor cholesterol levels", "Consider lifestyle changes" ]
+    }, {
+      "category" : "Diabetes Management",
+      "score" : 30,
+      "maxScore" : 100,
+      "findings" : "HbA1c level is significantly elevated, indicating poor glycemic control.",
+      "keyPoints" : [ "Immediate dietary intervention", "Regular monitoring of blood glucose" ]
+    } ]
+  },
+  "areasOfConcern" : [ {
+    "parameter" : "LDL Cholesterol",
+    "value" : "50 mg/dL",
+    "severity" : "Moderate",
+    "whyItMatters" : "High LDL cholesterol increases the risk of heart disease.",
+    "potentialCauses" : [ "Diet high in saturated fats", "Sedentary lifestyle" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "<100 mg/dL",
+    "immediateAction" : "Implement dietary changes to reduce saturated fat intake."
+  }, {
+    "parameter" : "HbA1c",
+    "value" : "10.0%",
+    "severity" : "Critical",
+    "whyItMatters" : "Elevated HbA1c indicates poor long-term blood sugar control, increasing diabetes complications.",
+    "potentialCauses" : [ "Poor dietary choices", "Lack of physical activity" ],
+    "riskLevel" : "High",
+    "targetValue" : "<5.7%",
+    "immediateAction" : "Consult with a diabetes educator for management strategies."
+  } ],
+  "positiveIndicators" : [ {
+    "parameter" : "Kidney Function",
+    "value" : "Normal",
+    "why" : "All kidney function tests are within normal limits.",
+    "maintain" : "Continue current hydration and dietary habits."
+  } ],
+  "recommendations" : {
+    "immediate" : {
+      "timeframe" : "1-2 weeks",
+      "actions" : [ {
+        "action" : "Start a low-carb diet",
+        "details" : "Focus on whole foods and reduce sugar intake.",
+        "priority" : "High"
+      } ]
+    },
+    "shortTerm" : {
+      "timeframe" : "1-3 months",
+      "dietary" : [ "Increase fiber intake", "Reduce saturated fats" ],
+      "lifestyle" : [ "Increase physical activity", "Monitor blood sugar levels regularly" ],
+      "supplements" : [ "Consider Omega-3 fatty acids" ]
+    },
+    "longTerm" : {
+      "timeframe" : "3-6 months",
+      "habits" : [ "Regular exercise routine", "Consistent meal planning" ],
+      "monitoring" : [ "Regular lipid panels", "Frequent HbA1c testing" ]
+    }
+  },
+  "followUp" : {
+    "retestTimeline" : [ {
+      "timeframe" : "3 months",
+      "tests" : [ "Lipid panel", "HbA1c" ]
+    } ],
+    "discussWithDoctor" : [ "Diabetes management strategies", "Cholesterol-lowering medications" ],
+    "warningSigns" : [ "Increased thirst", "Frequent urination" ]
+  },
+  "healthScoreBreakdown" : {
+    "cardiovascular" : {
+      "score" : 10,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "metabolic" : {
+      "score" : 8,
+      "maxScore" : 25,
+      "status" : "Critical"
+    },
+    "organFunction" : {
+      "score" : 21,
+      "maxScore" : 25,
+      "status" : "Good"
+    },
+    "nutritional" : {
+      "score" : 16,
+      "maxScore" : 25,
+      "status" : "Fair"
+    }
+  },
+  "metadata" : {
+    "analysisDate" : "2024-12-13T10:30:00Z",
+    "aiModel" : "gpt-4o",
+    "version" : "1.0"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "overallHealthScore" : {
+    "score" : 75,
+    "maxScore" : 100,
+    "rating" : "Good",
+    "ratingColor" : "green",
+    "assessment" : "Overall health is satisfactory with some areas needing attention."
+  },
+  "outOfRangeValues" : [ {
+    "parameter" : "LDL Cholesterol",
+    "yourValue" : "140 mg/dL",
+    "idealRange" : "<100 mg/dL",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 40
+  } ],
+  "summary" : {
+    "brief" : "The health report indicates a generally good health status with a notable concern regarding LDL cholesterol levels. Further evaluation and lifestyle adjustments are recommended.",
+    "reportDate" : "2024-12-13",
+    "patientInfo" : {
+      "name" : "Not available",
+      "age" : "Not available",
+      "gender" : "Not available"
+    }
+  },
+  "keyFindings" : {
+    "categories" : [ {
+      "name" : "Complete Blood Count",
+      "tests" : [ {
+        "name" : "Hemoglobin",
+        "value" : "14.5 g/dL",
+        "normalRange" : "13.5-17.5 g/dL",
+        "status" : "normal",
+        "icon" : "✓"
+      } ]
+    } ]
+  },
+  "detailedAnalysis" : {
+    "byCategory" : [ {
+      "category" : "Cardiovascular Health",
+      "score" : 60,
+      "maxScore" : 100,
+      "findings" : "LDL cholesterol is elevated, indicating a risk for cardiovascular issues.",
+      "keyPoints" : [ "Monitor cholesterol levels", "Consider dietary changes" ]
+    } ]
+  },
+  "areasOfConcern" : [ {
+    "parameter" : "LDL Cholesterol",
+    "value" : "140 mg/dL",
+    "severity" : "Moderate",
+    "whyItMatters" : "High LDL cholesterol can lead to heart disease and other cardiovascular problems.",
+    "potentialCauses" : [ "Diet high in saturated fats", "Lack of physical activity" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "<100 mg/dL",
+    "immediateAction" : "Consult with a healthcare provider for a management plan."
+  } ],
+  "positiveIndicators" : [ {
+    "parameter" : "Kidney Function",
+    "value" : "Normal",
+    "why" : "Kidneys are functioning well, indicating good filtration and waste removal.",
+    "maintain" : "Keep current habits"
+  } ],
+  "recommendations" : {
+    "immediate" : {
+      "timeframe" : "1-2 weeks",
+      "actions" : [ {
+        "action" : "Start Vitamin D supplementation",
+        "details" : "2000-4000 IU daily",
+        "priority" : "High"
+      } ]
+    },
+    "shortTerm" : {
+      "timeframe" : "1-3 months",
+      "dietary" : [ "Reduce saturated fat intake", "Increase fiber-rich foods" ],
+      "lifestyle" : [ "Increase physical activity", "Manage stress levels" ],
+      "supplements" : [ "Omega-3 fatty acids" ]
+    },
+    "longTerm" : {
+      "timeframe" : "3-6 months",
+      "habits" : [ "Regular exercise", "Balanced diet" ],
+      "monitoring" : [ "Regular lipid panels", "Routine health check-ups" ]
+    }
+  },
+  "followUp" : {
+    "retestTimeline" : [ {
+      "timeframe" : "3 months",
+      "tests" : [ "Lipid panel", "Fasting glucose" ]
+    } ],
+    "discussWithDoctor" : [ "Cholesterol management", "Dietary changes" ],
+    "warningSigns" : [ "Chest pain", "Shortness of breath" ]
+  },
+  "healthScoreBreakdown" : {
+    "cardiovascular" : {
+      "score" : 15,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "metabolic" : {
+      "score" : 16,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "organFunction" : {
+      "score" : 21,
+      "maxScore" : 25,
+      "status" : "Good"
+    },
+    "nutritional" : {
+      "score" : 16,
+      "maxScore" : 25,
+      "status" : "Fair"
+    }
+  },
+  "metadata" : {
+    "analysisDate" : "2024-12-13T10:30:00Z",
+    "aiModel" : "gpt-4o",
+    "version" : "1.0"
+  }
+}

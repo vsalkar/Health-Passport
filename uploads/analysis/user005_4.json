@@ -1,0 +1,158 @@
+{
+  "overallHealthScore" : {
+    "score" : 70,
+    "maxScore" : 100,
+    "rating" : "Good",
+    "ratingColor" : "green",
+    "assessment" : "Overall health is stable with some areas needing attention."
+  },
+  "outOfRangeValues" : [ {
+    "parameter" : "Vitamin B12",
+    "yourValue" : "115.3 pg/ml",
+    "idealRange" : "200 - 835 pg/ml",
+    "status" : "Low",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 43.5
+  }, {
+    "parameter" : "Vitamin D3",
+    "yourValue" : "12.15 ng/ml",
+    "idealRange" : "41 - 100 ng/ml",
+    "status" : "Deficient",
+    "severity" : "Critical",
+    "severityColor" : "red",
+    "percentageOutOfRange" : 88.5
+  }, {
+    "parameter" : "Uric Acid",
+    "yourValue" : "10.3 mg/dl",
+    "idealRange" : "3.6 - 7.7 mg/dl",
+    "status" : "High",
+    "severity" : "Moderate",
+    "severityColor" : "orange",
+    "percentageOutOfRange" : 33.8
+  } ],
+  "summary" : {
+    "brief" : "The patient shows good overall health but has deficiencies in Vitamin B12 and Vitamin D3, along with elevated uric acid levels. Regular monitoring and dietary adjustments are recommended.",
+    "reportDate" : "2024-01-23",
+    "patientInfo" : {
+      "name" : "MR. PAWAN DUBEY",
+      "age" : "28",
+      "gender" : "Male"
+    }
+  },
+  "keyFindings" : {
+    "categories" : [ {
+      "name" : "Complete Blood Count",
+      "tests" : [ {
+        "name" : "Hemoglobin",
+        "value" : "15.5 g/dL",
+        "normalRange" : "13 - 17 g/dL",
+        "status" : "normal",
+        "icon" : "✓"
+      } ]
+    } ]
+  },
+  "detailedAnalysis" : {
+    "byCategory" : [ {
+      "category" : "Nutritional Health",
+      "score" : 50,
+      "maxScore" : 100,
+      "findings" : "Vitamin B12 and D3 levels are below the recommended range, indicating a need for dietary changes.",
+      "keyPoints" : [ "Increase intake of animal products for B12", "Consider Vitamin D supplementation" ]
+    } ]
+  },
+  "areasOfConcern" : [ {
+    "parameter" : "Vitamin B12",
+    "value" : "115.3 pg/ml",
+    "severity" : "Moderate",
+    "whyItMatters" : "Low levels can lead to neurological issues and anemia.",
+    "potentialCauses" : [ "Dietary deficiency", "Malabsorption" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "200 - 835 pg/ml",
+    "immediateAction" : "Increase dietary intake of B12-rich foods or consider supplementation."
+  }, {
+    "parameter" : "Vitamin D3",
+    "value" : "12.15 ng/ml",
+    "severity" : "Critical",
+    "whyItMatters" : "Deficiency can lead to bone health issues and immune dysfunction.",
+    "potentialCauses" : [ "Lack of sunlight exposure", "Dietary insufficiency" ],
+    "riskLevel" : "High",
+    "targetValue" : "41 - 100 ng/ml",
+    "immediateAction" : "Start Vitamin D supplementation immediately."
+  }, {
+    "parameter" : "Uric Acid",
+    "value" : "10.3 mg/dl",
+    "severity" : "Moderate",
+    "whyItMatters" : "High levels can lead to gout and kidney issues.",
+    "potentialCauses" : [ "High purine diet", "Dehydration" ],
+    "riskLevel" : "Medium",
+    "targetValue" : "3.6 - 7.7 mg/dl",
+    "immediateAction" : "Modify diet to reduce purine intake and increase hydration."
+  } ],
+  "positiveIndicators" : [ {
+    "parameter" : "Lipid Profile",
+    "value" : "Normal",
+    "why" : "Cholesterol and triglyceride levels are within desirable ranges.",
+    "maintain" : "Continue current dietary and lifestyle habits."
+  } ],
+  "recommendations" : {
+    "immediate" : {
+      "timeframe" : "1-2 weeks",
+      "actions" : [ {
+        "action" : "Start Vitamin D supplementation",
+        "details" : "2000-4000 IU daily",
+        "priority" : "High"
+      }, {
+        "action" : "Increase Vitamin B12 intake",
+        "details" : "Include more meat, eggs, and dairy in diet.",
+        "priority" : "High"
+      } ]
+    },
+    "shortTerm" : {
+      "timeframe" : "1-3 months",
+      "dietary" : [ "Reduce purine-rich foods", "Increase fruits and vegetables" ],
+      "lifestyle" : [ "Increase sunlight exposure", "Regular exercise" ],
+      "supplements" : [ "Vitamin D", "Vitamin B12" ]
+    },
+    "longTerm" : {
+      "timeframe" : "3-6 months",
+      "habits" : [ "Regular health check-ups", "Balanced diet" ],
+      "monitoring" : [ "Regular blood tests for vitamin levels", "Monitor uric acid levels" ]
+    }
+  },
+  "followUp" : {
+    "retestTimeline" : [ {
+      "timeframe" : "3 months",
+      "tests" : [ "Vitamin B12", "Vitamin D3", "Uric Acid" ]
+    } ],
+    "discussWithDoctor" : [ "Vitamin D deficiency management", "Dietary changes for uric acid" ],
+    "warningSigns" : [ "Joint pain", "Fatigue", "Neurological symptoms" ]
+  },
+  "healthScoreBreakdown" : {
+    "cardiovascular" : {
+      "score" : 20,
+      "maxScore" : 25,
+      "status" : "Good"
+    },
+    "metabolic" : {
+      "score" : 10,
+      "maxScore" : 25,
+      "status" : "Needs Improvement"
+    },
+    "organFunction" : {
+      "score" : 22,
+      "maxScore" : 25,
+      "status" : "Good"
+    },
+    "nutritional" : {
+      "score" : 18,
+      "maxScore" : 25,
+      "status" : "Fair"
+    }
+  },
+  "metadata" : {
+    "analysisDate" : "2024-01-23T10:30:00Z",
+    "aiModel" : "gpt-4o",
+    "version" : "1.0"
+  }
+}
