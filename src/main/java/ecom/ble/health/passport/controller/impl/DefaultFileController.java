@@ -4,6 +4,7 @@ import ecom.ble.health.passport.controller.FileController;
 import ecom.ble.health.passport.model.FileUploadResponse;
 import ecom.ble.health.passport.model.UserFileMetadata;
 import ecom.ble.health.passport.service.FileStorageService;
+import ecom.ble.health.passport.service.HealthReportProcessingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -21,6 +22,7 @@ import java.util.List;
 public class DefaultFileController implements FileController {
 
     private final FileStorageService fileStorageService;
+    private final HealthReportProcessingService healthReportProcessingService;
 
     @Override
     public ResponseEntity<List<FileUploadResponse>> uploadFiles(String userId, MultipartFile[] files) {
@@ -29,6 +31,14 @@ public class DefaultFileController implements FileController {
         }
 
         List<FileUploadResponse> responses = fileStorageService.storeFiles(userId, files);
+
+        // Trigger async health report processing for each successfully uploaded file
+        for (FileUploadResponse response : responses) {
+            if (response.isSuccess() && response.getFileId() != null) {
+                healthReportProcessingService.processHealthReport(userId, response.getFileId(), response.getFileName());
+            }
+        }
+
         return ResponseEntity.ok(responses);
     }
 

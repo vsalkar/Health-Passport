@@ -103,7 +103,7 @@ public class FileStorageService {
             // If re-uploading same file name, treat as fresh upload
             entity.setUploadedAt(Instant.now());
 
-            userFileRepository.save(entity);
+            UserFileEntity savedEntity = userFileRepository.save(entity);
 
             String downloadUrl = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/api/users/")
@@ -113,6 +113,7 @@ public class FileStorageService {
                     .toUriString();
 
             return FileUploadResponse.builder()
+                    .fileId(savedEntity.getFileId())
                     .fileName(originalFileName)
                     .fileType(file.getContentType())
                     .size(file.getSize())

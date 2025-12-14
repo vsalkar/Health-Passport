@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.util.List;
 @Setter
 @Getter
-public class MedicalRecord {
+public class MedicalRecordShort {
     private String medicalRecordId;
     private String encounterDate;
     private String recordType;

@@ -13,6 +13,8 @@ public interface UserFileRepository extends JpaRepository<UserFileEntity, Long> 
     Optional<UserFileEntity> findFirstByUserIdAndStoredFileNameAndIsDeletedFalse(String userId, String storedFileName);
 
     List<UserFileEntity> findByUserIdAndIsDeletedFalseOrderByUploadedAtDesc(String userId);
+
+    Optional<UserFileEntity> findByUserIdAndFileId(String userId, Long fileId);
 }
 
 

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FileUploadResponse {
+    private Long fileId;
     private String fileName;
     private String fileType;
     private long size;

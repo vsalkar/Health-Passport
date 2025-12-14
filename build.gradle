@@ -10,7 +10,7 @@ description = 'My Health Passport, Empowered Health Management'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(25)
+		languageVersion = JavaLanguageVersion.of(24)
 	}
 }
 

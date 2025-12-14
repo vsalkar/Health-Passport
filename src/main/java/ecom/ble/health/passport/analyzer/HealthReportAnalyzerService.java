@@ -21,7 +21,7 @@ public class HealthReportAnalyzerService {
     private final OpenAiClient openAiClient;
     private final ObjectMapper objectMapper;
 
-    @Value("${openai.model:gpt-4o}")
+    @Value("${openai.model:gpt-4o-mini}")
     private String defaultModel;
 
     public JsonNode analyze(String userId, String filename, AnalyzerRequest request) {
